@@ -9,7 +9,7 @@ HACKLAB funciona como una interfaz web para organizar y consultar notas escritas
 
 ---
 
-## ¿Qué es HACKLAB?
+### ¿Qué es HACKLAB?
 
 HACKLAB es una aplicación web estática construida para almacenar y consultar conocimiento técnico mediante archivos Markdown.
 
@@ -37,7 +37,7 @@ Esto permite agregar nuevas notas sin tener que modificar los componentes de la 
 
 # Tecnologías
 
-## Frontend
+### Frontend
 
 * React
 * TypeScript
@@ -45,13 +45,13 @@ Esto permite agregar nuevas notas sin tener que modificar los componentes de la 
 * HTML
 * CSS
 
-## Procesamiento de Markdown
+### Procesamiento de Markdown
 
 * `marked`
 
 Utilizado para convertir los archivos Markdown en HTML.
 
-## Syntax Highlighting
+### Syntax Highlighting
 
 * `highlight.js`
 
@@ -75,7 +75,7 @@ nmap -sV 10.10.10.10
 
 El contenido original del Markdown no se modifica.
 
-## Deployment
+### Deployment
 
 * GitHub Pages
 * GitHub Actions
@@ -137,7 +137,7 @@ HACKLAB/
 
 # ¿Dónde está cada cosa?
 
-## `content/`
+### `content/`
 
 Es la parte más importante para el contenido.
 
@@ -227,7 +227,7 @@ Esto permite acceder directamente a una nota mediante su URL.
 
 Contiene los componentes principales de la interfaz.
 
-## `Header.tsx`
+### `Header.tsx`
 
 Contiene:
 
@@ -239,7 +239,7 @@ El Header permanece estático mientras el contenido hace scroll.
 
 ---
 
-## `Sidebar.tsx`
+### `Sidebar.tsx`
 
 Contiene el explorador de archivos.
 
@@ -254,7 +254,7 @@ Se encarga de mostrar:
 
 ---
 
-## `MarkdownViewer.tsx`
+### `MarkdownViewer.tsx`
 
 Es el componente encargado de mostrar una nota Markdown.
 
@@ -278,7 +278,7 @@ No modifica la estructura ni el contenido original del bloque de código.
 
 ---
 
-## `Home.tsx`
+### `Home.tsx`
 
 Contiene la página principal de HACKLAB.
 
@@ -297,7 +297,7 @@ Cada cierto tiempo se actualizan sin necesidad de mantener una lista manual.
 
 ---
 
-## `src/index.css`
+### `src/index.css`
 
 Contiene todo el estilo visual de HACKLAB.
 
@@ -440,7 +440,7 @@ La URL puede compartirse directamente y permite acceder a una nota específica.
 
 La interfaz está diseñada para escritorio y dispositivos móviles.
 
-## Desktop
+### Desktop
 
 ```text
 ┌─────────────────────────────────────────────┐
@@ -458,7 +458,7 @@ El Header y Sidebar permanecen estáticos.
 
 El contenido principal tiene su propio scroll.
 
-## Mobile
+### Mobile
 
 ```text
 ┌──────────────────────┐
