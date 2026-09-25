@@ -5,6 +5,7 @@ import markdownFiles from "./content"
 import Header from "./components/Header"
 import Sidebar from "./components/Sidebar"
 import MarkdownViewer from "./components/MarkdownViewer"
+import Home from "./components/Home"
 
 function getFileFromHash() {
 
@@ -35,8 +36,7 @@ function App() {
 
   const [selectedPath, setSelectedPath] = useState(
     () =>
-      getFileFromHash()?.path ??
-      markdownFiles[0]?.path
+      getFileFromHash()?.path
   )
 
   const [search, setSearch] = useState("")
@@ -108,9 +108,16 @@ function App() {
       file.name,
     ].join("/")
 
-    window.location.hash = encodeURIComponent(
+    const encodedRoute = encodeURIComponent(
       route
     ).replace(/%2F/g, "/")
+
+    const nextHash = `#/${encodedRoute}`
+
+    if (window.location.hash !== nextHash) {
+      window.location.hash = nextHash
+    }
+
   }
 
   return (
@@ -141,9 +148,20 @@ function App() {
           />
         )}
 
-        <MarkdownViewer
-          content={selectedFile?.content ?? ""}
-        />
+        {selectedFile ? (
+
+          <MarkdownViewer
+            content={selectedFile.content}
+          />
+
+        ) : (
+
+          <Home
+            files={markdownFiles}
+            onSelectFile={selectFile}
+          />
+
+        )}
 
       </div>
 
@@ -152,5 +170,3 @@ function App() {
 }
 
 export default App
-
-

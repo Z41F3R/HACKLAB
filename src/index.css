@@ -8,7 +8,7 @@ html,
 body,
 #root {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
@@ -21,6 +21,8 @@ body {
 
   background: #0b0f0c;
   color: #d6e0d8;
+
+  overflow: hidden;
 }
 
 button,
@@ -60,7 +62,12 @@ input {
 ========================= */
 
 .app {
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
   background: #0b0f0c;
 }
 
@@ -71,6 +78,7 @@ input {
 .header {
   width: 100%;
   height: 64px;
+  min-height: 64px;
 
   display: flex;
   align-items: center;
@@ -82,6 +90,10 @@ input {
   background: #0d120f;
 
   border-bottom: 1px solid #1b2a20;
+
+  flex-shrink: 0;
+
+  z-index: 100;
 }
 
 .logo {
@@ -190,7 +202,10 @@ input {
 
   width: 100%;
 
-  min-height: calc(100vh - 64px);
+  flex: 1;
+  min-height: 0;
+
+  overflow: hidden;
 }
 
 /* =========================
@@ -200,6 +215,7 @@ input {
 .sidebar {
   width: 260px;
   min-width: 260px;
+  height: 100%;
 
   padding: 22px 18px;
 
@@ -208,6 +224,9 @@ input {
   border-right: 1px solid #1b2a20;
 
   overflow-y: auto;
+  overflow-x: hidden;
+
+  flex-shrink: 0;
 }
 
 .sidebar-header {
@@ -376,10 +395,14 @@ input {
 
 .content {
   flex: 1;
+
+  width: 100%;
   min-width: 0;
+  min-height: 0;
 
   padding: 48px 6%;
 
+  overflow-y: auto;
   overflow-x: hidden;
 
   background: #0b0f0c;
@@ -388,7 +411,7 @@ input {
 .content article {
   width: 100%;
   max-width: 1400px;
-  
+
   margin: 0 auto;
 
   color: #c7d2ca;
@@ -665,12 +688,36 @@ input {
 
 @media (max-width: 768px) {
 
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .app {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+  }
+
   .header {
     height: 60px;
+    min-height: 60px;
 
     padding: 10px 12px;
 
     gap: 10px;
+
+    position: relative;
+
+    flex-shrink: 0;
   }
 
   .logo {
@@ -697,6 +744,13 @@ input {
 
   .layout {
     display: block;
+
+    width: 100%;
+
+    flex: 1;
+    min-height: 0;
+
+    overflow: hidden;
   }
 
   .sidebar {
@@ -752,7 +806,13 @@ input {
   .content {
     width: 100%;
 
+    height: 100%;
+    min-height: 0;
+
     padding: 30px 20px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .content article {
@@ -931,4 +991,285 @@ input {
   .header .menu-button {
     margin-left: auto;
   }
+}
+
+/* =========================
+   HOME
+========================= */
+
+.home-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.home {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.home-intro {
+  padding-top: 20px;
+}
+
+.home-label {
+  margin-bottom: 14px;
+
+  color: #4ade80;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+.home-intro h1 {
+  margin-bottom: 20px;
+
+  color: #e3ebe5;
+
+  font-size: 38px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.home-intro p {
+  max-width: 700px;
+
+  margin-bottom: 22px;
+
+  color: #9caf9f;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+.home-github {
+  display: inline-block;
+
+  color: #4ade80;
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid #285d38;
+
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.home-github:hover {
+  color: #86efac;
+
+  border-color: #4ade80;
+}
+
+.home-explore {
+  margin-top: 70px;
+}
+
+.home-section-title {
+  margin-bottom: 10px;
+
+  color: #4ade80;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.home-section-description {
+  margin-bottom: 25px;
+
+  color: #718078;
+
+  font-size: 13px;
+}
+
+.home-notes {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.home-note {
+  position: relative;
+
+  min-height: 120px;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border: 1px solid #1b2d20;
+  border-radius: 5px;
+
+  background: #0d120f;
+
+  color: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home-note:hover {
+  background: #111812;
+
+  border-color: #2f7d46;
+
+  transform: translateY(-2px);
+}
+
+.home-note-name {
+  margin-bottom: 10px;
+
+  color: #d6e0d8;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+.home-note-folder {
+  color: #607265;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+.home-note-arrow {
+  margin-top: auto;
+
+  padding-top: 15px;
+
+  color: #4ade80;
+
+  font-size: 13px;
+}
+
+/* =========================
+   HOME MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .home-content {
+    display: block;
+  }
+
+  .home-intro {
+    padding-top: 5px;
+  }
+
+  .home-intro h1 {
+    font-size: 30px;
+  }
+
+  .home-explore {
+    margin-top: 50px;
+  }
+
+  .home-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .home-note {
+    min-height: 100px;
+  }
+}
+
+/* =========================
+   HOME STATS
+========================= */
+
+.home-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-top: 55px;
+}
+
+.home-stat {
+  min-height: 105px;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 1px solid #1b2d20;
+  border-radius: 5px;
+
+  background: #0d120f;
+}
+
+.home-stat-number {
+  margin-bottom: 7px;
+
+  color: #4ade80;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.home-stat-label {
+  color: #607265;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+/* =========================
+   HOME STATS MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .home-stats {
+    gap: 10px;
+
+    margin-top: 45px;
+  }
+
+  .home-stat {
+    min-height: 90px;
+
+    padding: 14px;
+  }
+
+  .home-stat-number {
+    font-size: 23px;
+  }
+
+  .home-stat-label {
+    font-size: 9px;
+  }
+
 }
